@@ -18,7 +18,7 @@ jobs:
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -h localhost"
+          --health-cmd="mysqladmin ping -h mysql"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
@@ -39,7 +39,7 @@ jobs:
       - name: Wait for MySQL to be ready
         run: |
           echo "Waiting for MySQL to be ready..."
-          while ! mysqladmin ping -h localhost --silent; do
+          while ! mysqladmin ping -h mysql --silent; do
             sleep 2
           done
           echo "MySQL is ready!"
