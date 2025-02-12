@@ -35,7 +35,15 @@ jobs:
           
       - name: Set JAVA_HOME
         run: echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))" >> $GITHUB_ENV
-        
+
+      - name: Wait for MySQL to be ready
+        run: |
+          echo "Waiting for MySQL to be ready..."
+          while ! mysqladmin ping -h localhost --silent; do
+            sleep 2
+          done
+          echo "MySQL is ready!"
+          
       - name: Grant Execute Permission for Gradle
         run: chmod +x gradlew
 
