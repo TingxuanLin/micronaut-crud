@@ -21,7 +21,7 @@ jobs:
           --health-cmd="mysqladmin ping -h mysql"
           --health-interval=10s
           --health-timeout=5s
-          --health-retries=3
+          --health-retries=10
 
     steps:
       - name: Checkout Repository
@@ -36,10 +36,17 @@ jobs:
       - name: Set JAVA_HOME
         run: echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))" >> $GITHUB_ENV
 
-      - name: Test MySQL Connection
+      - name: Wait for MySQL to be ready
         run: |
-          echo "Testing MySQL Connection..."
-          mysql -h mysql -u root -ppassword -e "SHOW DATABASES;"
+          echo "Waiting for MySQL to be ready..."
+          for i in {1..30}; do
+            if mysql -h mysql -u root -ppassword -e "SHOW DATABASES;" > /dev/null 2>&1; then
+              echo "MySQL is ready!"
+              break
+            fi
+            echo "Waiting for MySQL... Attempt $i/30"
+            sleep 5
+          done
           
       - name: Grant Execute Permission for Gradle
         run: chmod +x gradlew
