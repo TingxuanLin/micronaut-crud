@@ -39,8 +39,8 @@ application {
     mainClass = "com.piyal.Application"
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("21")
-    targetCompatibility = JavaVersion.toVersion("21")
+    sourceCompatibility = JavaVersion.toVersion("20")
+    targetCompatibility = JavaVersion.toVersion("20")
 }
 
 
