@@ -53,4 +53,4 @@ jobs:
           AWS_SESSION_TOKEN: IQoJb3JpZ2luX2VjEM3//////////wEaCXVzLXdlc3QtMiJHMEUCIBkHPrhzXzdKzpF3wqHRgi3rRnC+YBxL58jOAdehruFPAiEAh/hpVAjUwAflvkZ6DKormIrtRKsg33jryHmf4RAJTbQqrwII5v//////////ARACGgwxMzI2MjAwMzkwMDIiDO8tWETgTATn5fMNhiqDArMxXp4QbWcMDhYzLbAnt3RmvvTnAbFlZwYGF5MF03BMdx6tItBdfZwsM1/vu9EWOqSVFh2sYHfqKPgPlJjV/zL3P4Hw8UOsxmJT/sVDIFOm50P+Tx3jLcKZ5VrNF9dN+e5Kq1cmZRfFP8FbPtgpW0aepY3IjcATFTGg8YleNumapY07eYbVzG0iy8jt5N+FaipA2jFfwFzK6hzzoXvQCkjZRA/f5vWsIrkGVFga1BRMKuT2IIbViTEYM+TtmLUY+soY+VjRTsDCWuFqUFmXH6quqYZZw8Z6aY09m1hC0pEl6zRYoK9l8mvEJbmFaCPSas1jFyLoU2fUDPij7N+7rnD4sgwwisywvQY6nQH1ZK/7/utcvHuA4UQSwzNgfhoGIdhi8kGkbNf+BRju3VdkNKyMy0U7z/1kNvDAeERPvOvsrbKR8J60GsubzIDr0FMRSRDUGLxQ9176DOj3N8cSGNyne/SxGGgKaaGZJ6tvxc2untzYVdcs0+OSiugbIBVMabm87weuQt/cDGao0o1i6Dpa/fbn6GHFNprIt+tnI7dpNxUDQBaLdu1u
           AWS_REGION: "us-east-1"
           S3_BUCKET: "assignment6buckets"
-        run: aws s3 cp build/libs/*.jar s3://$S3_BUCKET/
+        run: aws s3 cp build/libs/ s3://$S3_BUCKET/ --revursive
